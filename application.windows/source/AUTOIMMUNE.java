@@ -624,15 +624,12 @@ class Cell {
       _moving = false;
       _speed = 0;
       for (Enemy e : $enemies) {
-        if (e._exists
-            && ((_x + (_width)) > e._x && (_x) < e._x + (e._width))
-            && ((_y + (_height)) > e._y && (_y) < e._y
-                + (e._height))) {
+        if (e._exists && ((_x + (_width)) > e._x && (_x) < e._x + (e._width)) && ((_y + (_height)) > e._y && (_y) < e._y + (e._height))) {
           _health -= e.getPower();
           if (_health <= 0) {
             finish(false);
           }
-          if (e.getIndex() == 0) {
+          if (e.getIndex() != 1) {
             e.delete();
             $sounds[0].rewind();
             $sounds[0].play();
